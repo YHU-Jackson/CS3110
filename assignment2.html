@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Analytics Dashboard</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .chart-container {
+      background-color: #f8f9fa;
+      border: 1px solid #ddd;
+      padding: 20px;
+      margin-bottom: 20px;
+      min-height: 300px;
+    }
+    .chart-title {
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+  </style>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="container my-4">
+    <h1 class="text-center mb-4">Monster Energy Drink Analytics Dashboard</h1>
+
+    <!-- Row 1: One large chart, one small -->
+    <div class="row">
+      <div class="col-md-8">
+        <div class="chart-container">
+          <div class="chart-title">Growth of Monster Energy Drink Usage Over Time</div>
+          <canvas id="usageChart"></canvas>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="chart-container">
+          <div class="chart-title">Market Share: Sugar vs. Sugar-Free Monster Drinks</div>
+          <canvas id="sugarChart"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <!-- Row 2: Three equally sized charts -->
+    <div class="row">
+      <div class="col-md-4">
+        <div class="chart-container">
+          <div class="chart-title">Cognitive Performance Before and After Drinking Monster</div>
+          <canvas id="performanceChart"></canvas>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="chart-container">
+          <div class="chart-title">Sugar Intake from Monster vs. Diabetes Risk</div>
+          <canvas id="diabetesChart"></canvas>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="chart-container">
+          <div class="chart-title">Heart Attack Risk Based on Daily Monster Consumption</div>
+          <canvas id="heartChart"></canvas>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+  new Chart(document.getElementById("usageChart"), {
+    type: "line",
+    data: {
+      labels: ["2019", "2020", "2021", "2022", "2023"],
+      datasets: [{
+        label: "Anunal Users (in thousands)",
+        data: [120, 150, 170, 200, 220],
+        borderWidth: 2,
+        borderColor: "blue",
+        fill: false
+      }]
+    }
+  });
+
+  new Chart(document.getElementById("sugarChart"), {
+    type: "pie",
+    data: {
+      labels: ["Sugar", "Sugar-Free"],
+      datasets: [{
+        data: [65, 35],
+        backgroundColor: ["#ff6384", "#36a2eb"]
+      }]
+    }
+  });
+
+  new Chart(document.getElementById("performanceChart"), {
+    type: "bar",
+    data: {
+      labels: ["Before", "After"],
+      datasets: [{
+        label: "Focus Level (%)",
+        data: [60, 85],
+        backgroundColor: ["gray", "green"]
+      }]
+    }
+  });
+
+  new Chart(document.getElementById("diabetesChart"), {
+    type: "scatter",
+    data: {
+      datasets: [{
+        label: "Sugar Consumption vs. Diabetes Risk",
+        data: [
+          {x: 50, y: 2}, {x: 100, y: 5}, {x: 150, y: 10}, {x: 200, y: 20}
+        ],
+        backgroundColor: "red"
+      }]
+    },
+    options: {
+      scales: {
+        x: {title: {display: true, text: "mg of Sugar per Day"}},
+        y: {title: {display: true, text: "Risk % of Developing Diabetes"}}
+      }
+    }
+  });
+
+  new Chart(document.getElementById("heartChart"), {
+    type: "line",
+    data: {
+      labels: ["1 drink", "2 drinks", "3 drinks", "4+ drinks"],
+      datasets: [{
+        label: "Heart Attack Rate (%)",
+        data: [2, 5, 10, 20],
+        backgroundColor: "rgba(255,0,0,0.3)",
+        borderColor: "red",
+        fill: true
+      }]
+    }
+  });
+</script>
+
+</body>
+</html>
